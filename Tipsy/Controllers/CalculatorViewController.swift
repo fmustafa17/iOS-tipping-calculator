@@ -36,6 +36,9 @@ class CalculatorViewController: UIViewController {
 
         guard let percentage = sender.title(for: .normal) else { return }
 
+        // Perserve the button text with % symbols to use in the Results view
+        model.percentage = percentage
+        // get the numeric value of the button in decimal form
         model.tipPercentage = model.getPercentageNumber(percentage)
 
         billTextField.endEditing(true)
@@ -49,7 +52,11 @@ class CalculatorViewController: UIViewController {
 
     @IBAction func calculatePressed(_ sender: Any) {
         model.billTotal = Double(billTextField.text!) ?? 0.0
-        print(model.calculateSplitMoney())
+
+        let resultsStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let resultsVC = resultsStoryboard.instantiateViewController(identifier: "ResultsViewController") as! ResultsViewController
+        resultsVC.model = model
+        self.present(resultsVC, animated: true, completion: nil)
     }
 
 }

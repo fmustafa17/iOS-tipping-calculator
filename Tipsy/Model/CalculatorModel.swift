@@ -13,6 +13,8 @@ struct CalculatorModel {
     var billTotal = 0.0
     var tipPercentage = 0.0
 
+    var percentage = ""
+
     func getPercentageNumber(_ percentage: String) -> Double {
         switch percentage {
         case "10%":
@@ -24,7 +26,7 @@ struct CalculatorModel {
         }
     }
 
-    func calculateSplitMoney() -> Any {
+    func calculateSplitMoney() -> String {
         let amountOfTip = billTotal * tipPercentage
         let newTotal = billTotal + amountOfTip
 

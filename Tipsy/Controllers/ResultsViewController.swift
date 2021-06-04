@@ -13,10 +13,14 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var settingsLabel: UILabel!
 
+    var model: CalculatorModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        totalLabel.text = model.calculateSplitMoney()
+
+        settingsLabel.text = "Split between \(model.numberOfPeople) people, with \(model.percentage) tip."
     }
     
     @IBAction func recalculatePressed(_ sender: UIButton) {
