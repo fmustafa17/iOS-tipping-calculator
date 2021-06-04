@@ -10,6 +10,9 @@ import Foundation
 
 struct CalculatorModel {
     var numberOfPeople = 0
+    var billTotal = 0.0
+    var tipPercentage = 0.0
+
     func getPercentageNumber(_ percentage: String) -> Double {
         switch percentage {
         case "10%":
@@ -19,5 +22,13 @@ struct CalculatorModel {
         default:
             return 0.0
         }
+    }
+
+    func calculateSplitMoney() -> Any {
+        let amountOfTip = billTotal * tipPercentage
+        let newTotal = billTotal + amountOfTip
+
+        let amountOwed = String(format: "%.2f", newTotal / Double(numberOfPeople))
+        return amountOwed
     }
 }

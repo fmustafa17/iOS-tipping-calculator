@@ -36,7 +36,9 @@ class CalculatorViewController: UIViewController {
 
         guard let percentage = sender.title(for: .normal) else { return }
 
-        print(model.getPercentageNumber(percentage))
+        model.tipPercentage = model.getPercentageNumber(percentage)
+
+        billTextField.endEditing(true)
 
     }
 
@@ -46,7 +48,8 @@ class CalculatorViewController: UIViewController {
     }
 
     @IBAction func calculatePressed(_ sender: Any) {
-        print(model.numberOfPeople)
+        model.billTotal = Double(billTextField.text!) ?? 0.0
+        print(model.calculateSplitMoney())
     }
 
 }
