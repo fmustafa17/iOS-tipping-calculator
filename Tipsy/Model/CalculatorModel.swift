@@ -9,6 +9,7 @@
 import Foundation
 
 struct CalculatorModel {
+    var numberOfPeople = 0
     func getPercentageNumber(_ percentage: String) -> Double {
         switch percentage {
         case "10%":

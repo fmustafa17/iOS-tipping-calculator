@@ -40,12 +40,13 @@ class CalculatorViewController: UIViewController {
 
     }
 
-    @IBAction func stepperValueChanged(_ sender: Any) {
-
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        splitNumberLabel.text = String(format: "%.0f", sender.value)
+        model.numberOfPeople = Int(sender.value)
     }
 
     @IBAction func calculatePressed(_ sender: Any) {
-
+        print(model.numberOfPeople)
     }
 
 }
